@@ -1,0 +1,40 @@
+version: "3.7"
+
+services:
+  cent1:
+    image: centos8_ssh
+    build:
+      context: ./docker_centos/
+    container_name: cent1
+    hostname: cent1
+    networks:
+             homenet:
+                    ipv4_address: 192.168.1.247
+  cent2:  
+    image: centos8_ssh
+    container_name: cent2
+    hostname: cent2
+    networks:
+             homenet:
+                    ipv4_address: 192.168.1.248
+
+  ubunu1:
+    image: ubuntu_ssh
+    build: 
+      context: ./docker_ubuntu/
+    container_name: ubuntu1
+    hostname: ubuntu1
+    networks:
+             homenet:
+                    ipv4_address: 192.168.1.249
+
+networks:
+  homenet:
+    driver: macvlan
+    driver_opts:
+            parent: eth0
+    ipam:
+      config:
+        - subnet: 192.168.1.0/24
+          ip_range: 192.168.1.0/28
+          gateway: 192.168.1.1
