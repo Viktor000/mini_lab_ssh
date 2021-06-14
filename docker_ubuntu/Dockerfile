@@ -5,7 +5,7 @@ ln -fs /usr/share/zoneinfo/Europe/Moscow /etc/localtime; \
 apt-get update;\
 apt-get install -y tzdata;\
 dpkg-reconfigure --frontend noninteractive tzdata;\
-apt-get install -y openssh-server;\
+apt-get install -y openssh-server iproute2;\
 apt-get clean; \
 mkdir /run/sshd; \
 chmod 755 /run/sshd; \
