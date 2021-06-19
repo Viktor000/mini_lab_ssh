@@ -1,5 +1,6 @@
 version: "3.7"
 
+
 services:
   cent1:
     image: centos8_ssh
@@ -34,7 +35,7 @@ services:
       context: ./docker_haproxy/
     container_name: haproxy
     hostname: haproxy
-    networks:
+    networks: 
             homenet:
                     ipv4_address: 192.168.1.250
 networks:
