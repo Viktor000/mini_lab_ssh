@@ -28,6 +28,15 @@ services:
              homenet:
                     ipv4_address: 192.168.1.249
 
+  haproxy:  
+    image: myhaproxy
+    build: 
+      context: ./docker_haproxy/
+    container_name: haproxy
+    hostname: haproxy
+    networks:
+            homenet:
+                    ipv4_address: 192.168.1.250
 networks:
   homenet:
     driver: macvlan
